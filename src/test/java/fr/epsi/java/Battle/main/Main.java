@@ -63,10 +63,11 @@ public class Main {
             System.out.print( "*Sélectionnez votre cible : " );
             response = scanner.nextInt();
             scanner.nextLine();
+            saveEnemiesList(enemiesList);
             
-        } while ( -1 >= response || response > enemiesList.size() );
+        } while ( 0 >= response || response > enemiesList.size() );
         if(response == -1) {
-        	
+        	return;
         }
         else {
         	Enemy e = enemiesList.get(response);

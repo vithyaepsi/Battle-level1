@@ -55,7 +55,8 @@ public abstract class Enemy {
 	}
 
 	public Enemy() {
-		super();
+		this.health = 0;
+		this.name = null;
 	}
 	
 	
