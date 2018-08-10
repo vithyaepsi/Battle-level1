@@ -9,6 +9,13 @@ import javax.persistence.Query;
 
 import fr.epsi.java.Battle.model.Enemy;
 
+/**
+ * Le DAO est utilisé pour manipuler l'EntityManager, qui peut agir sur la base de données
+ * On ne fera apparaître l'EntityManager nulle part dans le main(), il sera utilisé via le DAO
+ *
+ * Les classes du projet étant toutes des extends de la classe Enemy, et aucune classe n'ayant besoin d'une méthode supplémentaire
+ * On peut se permettre de ne créer qu'un seul DAO pour toutes les classes du projet
+ */
 public class EnemyDAO {
 	private EntityManager em;
 
@@ -17,12 +24,15 @@ public class EnemyDAO {
 		this.em = emf.createEntityManager();
 	}
 	
+	//	Le nom des méthodes ci-dessous sont délibérément en français pour montrer 
+	//	qu'on ne manipule pas directement les méthodes de l'EntityManager dans le main()
 	public Enemy trouverParId(int id){
 		Enemy e = em.find(Enemy.class, id);
 		
 		return e;
 	}
 	
+	//	Lorsqu'on persist(), on doit ouvrir une transaction, et la fermer
 	public void enregistrer(Enemy e) {
 		em.getTransaction().begin();
 		em.persist(e);
@@ -30,6 +40,7 @@ public class EnemyDAO {
 	}
 	
 	public List<Enemy> recupererTousEnnemis(){
+		//	La query est définie dans la classe Enemy
 		Query q = em.createNamedQuery("findAllEnemies", Enemy.class);
         List<Enemy> listeAgence = (List<Enemy>)q.getResultList();
         

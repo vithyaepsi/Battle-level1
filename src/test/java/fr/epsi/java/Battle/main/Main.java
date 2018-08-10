@@ -49,12 +49,11 @@ public class Main {
         do {
         	enemiesList = eDAO.recupererTousEnnemis();
         	
-        	
             System.out.println( "**************************************" );
             System.out.println( "* Liste des ennemis                  *" );
             int count = 0;
             for(Enemy e : enemiesList) {
-            	System.out.println( "* "+ count + "-" + e.getName() + " - " + e.getHealth() + " pv" );
+            	System.out.println( "* "+ count + "-" + e.getClass().getSimpleName() + " : " + e.getName() + " | " + e.getHealth() + " pv" );
             	count++;
             }
             
@@ -65,21 +64,26 @@ public class Main {
             scanner.nextLine();
             saveEnemiesList(enemiesList);
             
-        } while ( 0 >= response || response > enemiesList.size() );
+        } while ( -2 >= response || response >= enemiesList.size() );
         if(response == -1) {
-        	return;
+        	System.out.println("-- APPLICATION FERMÉE --");
+        	System.exit(0);
         }
         else {
         	Enemy e = enemiesList.get(response);
-        	int randomDamage = ThreadLocalRandom.current().nextInt(1, 19 + 1);
+        	int randomDamage = ThreadLocalRandom.current().nextInt(1, 15 + 1);	//	Random entre 1 et 15
         	String text = e.receiveDamage(randomDamage);
         	System.out.println(text);
+        	
+        	System.out.println("-- APPUYEZ SUR ENTRÉE POUR CONTINUER --");
+        	scanner.nextLine();
         	
         	gameMain();
         }
         
     }
 	
+	//	Sauvegarde les ennemis en base.
 	public static void saveEnemiesList(List<Enemy> enemiesList) {
 		for(Enemy e : enemiesList) {
 			eDAO.enregistrer(e);

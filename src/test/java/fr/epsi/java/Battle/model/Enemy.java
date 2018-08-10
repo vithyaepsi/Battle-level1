@@ -50,6 +50,7 @@ public abstract class Enemy {
 	}
 
 	public Enemy(int health, String name) {
+		this();
 		this.health = health;
 		this.name = name;
 	}
