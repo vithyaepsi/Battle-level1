@@ -21,6 +21,7 @@ public class EnemyDAO {
 
 	public EnemyDAO() {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("MaPersistenceUnit");
+		//	L'EntityManagerFactory peut renvoyer une nouvelle instance d'EntityManager
 		this.em = emf.createEntityManager();
 	}
 	
@@ -39,8 +40,12 @@ public class EnemyDAO {
 		em.getTransaction().commit();
 	}
 	
+	/**
+	 *	Il n'y a pas de méthode de base permettant de directement récupérer tous les objets stockés dans l'EM
+	 *	On utilisera une NamedQuery, qui est définie dans la classe Enemy
+	 *	
+	 * */
 	public List<Enemy> recupererTousEnnemis(){
-		//	La query est définie dans la classe Enemy
 		Query q = em.createNamedQuery("findAllEnemies", Enemy.class);
         List<Enemy> listeAgence = (List<Enemy>)q.getResultList();
         

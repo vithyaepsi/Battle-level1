@@ -64,7 +64,7 @@ public class Main {
             scanner.nextLine();
             saveEnemiesList(enemiesList);
             
-        } while ( -2 >= response || response >= enemiesList.size() );
+        } while ( -1 > response || response >= enemiesList.size() );
         if(response == -1) {
         	System.out.println("-- APPLICATION FERMÉE --");
         	System.exit(0);

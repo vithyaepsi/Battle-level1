@@ -7,6 +7,18 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
+
+/**
+ * Enemy est la classe dont va hériter toutes les classes représentant des ennemis
+ * 
+ * Cette classe et ses classes dérivées sont des @Entity
+ * L'attribut @Id étant hérité, il ne sera pas nécéssaire de le répéter.
+ * 
+ * Pour rappel, les annotations obligatoires pour qu'une classe respecte la JPA sont @Entity et @Id
+ * 
+ * La namedQuery est utilisée dans EnemyDAO.java
+ * 
+ * */
 @Entity
 @NamedQueries({
 	@NamedQuery (name = "findAllEnemies", query = "SELECT e FROM Enemy e")

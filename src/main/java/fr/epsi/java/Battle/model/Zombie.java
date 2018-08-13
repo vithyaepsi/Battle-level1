@@ -17,7 +17,7 @@ public class Zombie extends Enemy {
 	}
 
 	/**
-	 * Ici, lorsque un Enemy de la classe Zombie reçoit des dégâts létaux,
+	 * Ici, lorsque un Enemy de la classe Zombie reçoit des dégâts létaux, sa vie est réinitialisée à 1
 	 * */
 	public String receiveDamage(int damage) {
 		String text;
@@ -29,8 +29,7 @@ public class Zombie extends Enemy {
 		else {
 			text = super.receiveDamage(damage);
 		}
-		
-		
+			
 		return text;
 	}
 }
