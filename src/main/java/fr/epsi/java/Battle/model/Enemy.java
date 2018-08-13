@@ -21,6 +21,9 @@ public abstract class Enemy {
 	private String name;
 	
 	public String receiveDamage(int damage) {
+		if(damage <= 0) {
+			damage = 1;
+		}
 		this.health -= damage;
 		
 		String text;

@@ -19,9 +19,10 @@ public class Enfant extends Enemy {
 	/**
 	 * La méthode getDamage ne doit pas infliger de dégâts à l'Enfant
 	 * Étant donné que l'on refuse d'infliger des dégâts de 0
-	 * On doit réimplémenter le comportement de getDamage sans appeler super.getDamage() car 
+	 * On doit réimplémenter le comportement de receiveDamage sans appeler super.getDamage() car 
+	 * on a déterminé que les dégâts minimum seraient de 1 dans cette méthode
 	 * */
-	public String getDamage(int damage) {
+	public String receiveDamage(int damage) {
 		return "L'enfant a reçu une sucette à la place de dégâts.";
 	}
 

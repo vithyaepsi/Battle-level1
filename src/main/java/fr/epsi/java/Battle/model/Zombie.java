@@ -22,9 +22,9 @@ public class Zombie extends Enemy {
 	public String receiveDamage(int damage) {
 		String text;
 		if( health - damage <= 0 && !hasResurrected ) {
-			health = 1;
 			hasResurrected = true;
 			text = super.receiveDamage(damage) + "... Mais a réssuscité !";
+			health = 1;
 		}
 		else {
 			text = super.receiveDamage(damage);
